@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+<main>
+    <div>
+        <a href="/add">Add New Books</a>
+    </div>
+
+    <% books.forEach(book=> { %>
+        <div>
+            <% if (book.isbn) { %>  // avoid displaying broken image icon when "isbn" field is blank
+                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="cover">
+            <% } %>
+
+            <h2>
+                <%= book.title %>
+            </h2>
+
+            <p>
+                Author: <%= book.author %>
+            </p>
+
+            <p>
+                Rating: <b><%= book.rating %></b>/10
+            </p>
+
+            <p>
+                <%= book.notes %>
+            </p>
+
+            <div style="display: flex; gap: 20px;">
+                <a href="/edit/<%= book.id %>">Edit</a>
+
+                <form action="/delete/<%= book.id %>" method="post" onclick="return confirm('Delete this book?')">
+                    <!-- 'confirm' js funtion is used to handle any accidental click on 'delete' button -->
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <hr>
+        </div>
+    <% }) %>
+</main>
+<%- include('partials/footer.ejs') %>

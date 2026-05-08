@@ -1,0 +1,30 @@
+/* ====== CSS Reset ====== */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Improve body defaults */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* 4. Responsive images */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Inherit fonts for form elements */
+input, button, textarea, select {
+  font: inherit;
+}
+/* ------- CSS Reset ------- */
