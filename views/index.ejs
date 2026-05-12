@@ -6,7 +6,7 @@
 
     <% books.forEach(book=> { %>
         <div>
-            <% if (book.isbn) { %>  // avoid displaying broken image icon when "isbn" field is blank
+            <% if (book.isbn) { %>  <!-- avoid displaying broken image icon when "isbn" field is blank --> 
                 <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="cover">
             <% } %>
 

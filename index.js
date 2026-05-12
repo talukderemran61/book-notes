@@ -13,32 +13,32 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 let books = [
-    {
-    title: "Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character",
-    author: 'Richard Phillips Feynman and Ralph Leighton',
-    rating: 8,
-    notes: "Surely You're Joking, Mr. Feynman! is a highly entertaining, conversational memoir showcasing Nobel physicist Richard Feynman's eccentric curiosity, wit, and unique approach to science and life. It portrays him as a brilliant, down-to-earth storyteller, though some readers may find his anecdotal style and self-assurance arrogant or tedious.",
-    date_read: '2026-04-20',
-    isbn: '0553346687'
-    },
-    {
-    title: "Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character",
-    author: 'Richard Phillips Feynman and Ralph Leighton',
-    rating: 8,
-    notes: "Surely You're Joking, Mr. Feynman! is a highly entertaining, conversational memoir showcasing Nobel physicist Richard Feynman's eccentric curiosity, wit, and unique approach to science and life. It portrays him as a brilliant, down-to-earth storyteller, though some readers may find his anecdotal style and self-assurance arrogant or tedious.",
-    date_read: '2026-04-20',
-    isbn: '0553346687'
-    }
+//     {
+//     title: "Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character",
+//     author: 'Richard Phillips Feynman and Ralph Leighton',
+//     rating: 8,
+//     notes: "Surely You're Joking, Mr. Feynman! is a highly entertaining, conversational memoir showcasing Nobel physicist Richard Feynman's eccentric curiosity, wit, and unique approach to science and life. It portrays him as a brilliant, down-to-earth storyteller, though some readers may find his anecdotal style and self-assurance arrogant or tedious.",
+//     date_read: '2026-04-20',
+//     isbn: '0553346687'
+//     },
+//     {
+//     title: "Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character",
+//     author: 'Richard Phillips Feynman and Ralph Leighton',
+//     rating: 8,
+//     notes: "Surely You're Joking, Mr. Feynman! is a highly entertaining, conversational memoir showcasing Nobel physicist Richard Feynman's eccentric curiosity, wit, and unique approach to science and life. It portrays him as a brilliant, down-to-earth storyteller, though some readers may find his anecdotal style and self-assurance arrogant or tedious.",
+//     date_read: '2026-04-20',
+//     isbn: '0553346687'
+//     }
 ];
 
 // home
 app.get("/", async (req, res) => {
     try {
-        // const result = await db.query("SELECT * FROM books ORDER BY date_read DESC;");  // sort by recency
+        const result = await db.query("SELECT * FROM books ORDER BY date_read DESC;");  // sort by recency
 
-        // res.render("index.ejs", { books: result.rows });
+        res.render("index.ejs", { books: result.rows });
         
-        res.render("index.ejs", { books });
+        // res.render("index.ejs", { books });
 
     } catch (err) {
         console.log(err);
