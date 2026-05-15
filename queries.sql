@@ -1,5 +1,3 @@
-CREATE DATABASE booknotes;
-
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,

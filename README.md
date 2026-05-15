@@ -1,5 +1,5 @@
 # Book Notes
-Save all the books read so far and the notes taken while reading
+Save all the books read so far and the notes taken while reading  
 ![Static Badge](https://img.shields.io/badge/Learning_project-Inspired_by_sive.rs-blue)
 
 ## About
@@ -28,35 +28,33 @@ This was built as a capstone project for Angela Yu's Web Development Bootcamp.
 
 1. Clone the repo by using `git clone` in terminal with git installed:
     ```bash
-        git clone https://github.com/talukderemran61/book_notes.git
+    git clone https://github.com/talukderemran61/book_notes.git
     ```
 2. Navigate into the folder
     ```bash
-        cd book_notes
+    cd book_notes
     ```
 3. Install dependencies
     ```bash
-        npm install
+    npm install
     ```
 4. Setup the postgres database
     - Start `pdAdmin` desktop app
     - Create a Database named `booknotes`
     - Select `booknotes` and open query editor
     - Copy & paste all the queries fron `queries.sql` file to create books table and seed data
-5. Repace the password with your own in `db.js` (database connection file)
+5. Create a `.env` file next to `index.js` file and add the environment variable. (optional)  
+    `.env.example` file is there as an example how to configure the variables. 
+6. Repace the password with your own in `db.js` (database connection file)
     ```bash
-        const db = new pg.Client({
-            user: 'postgres',
-            host: 'localhost', 
-            database: 'booknotes',
-            password: '<your_postgres_password>',
-            port: '5432',
-        });
+    const db = new pg.Client({
+        connectionString: process.env.DATABASE_URL || 'postgresql://postgres:<your_postgres_password>@localhost:5432/booknotes',
+    });
     ```
     Replace `<your_postgres_password>` with the password you used to configure pgAdmin.
-6. start the app
+7. start the app
     ```bash
-        npm start
+    npm start
     ```
     Visit `http://localhost:3000`
 
@@ -70,5 +68,14 @@ This was built as a capstone project for Angela Yu's Web Development Bootcamp.
 Emran Talukdar - emrant31@gmail.com(prefered) - [LinkedIn](https://www.linkedin.com/in/emran-talukdar/)
 
 ## Demo
-<!-- Live demo can't add right now. didn't learn cloud hosting -->
-<!-- TODO: Demo and Screenshots to be added later after full completion -->
+1. Home/Landing page with all the books, Sort books, add, edit, and delete book features
+![Home page](./public/assets/images/home_page.png)
+
+2. Add new book
+![Add book](./public/assets/images/add_page.png)
+
+3. Edit existing books
+![Edit book](./public/assets/images/edit_page.png)
+
+4. Book page with full notes
+![Full notes book](./public/assets/images/detailed_note_page.png)
