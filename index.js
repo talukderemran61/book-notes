@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyparser from 'body-parser';
-import db from './db.js';       // import from local file for database
+import db from './db.js';       // import from local file for database connection
 
 const app = express();
 const port = 3000;
@@ -34,7 +34,20 @@ let books = [
 // home
 app.get("/", async (req, res) => {
     try {
-        const result = await db.query("SELECT * FROM books ORDER BY date_read DESC;");  // sort by recency
+        let sort = req.query.sort || 'recent';
+        let orderBy;
+
+        if (sort === 'rating') {
+            orderBy = "rating DESC";
+        } else if (sort === 'title') {
+            orderBy = "title ASC";
+        } else {
+            orderBy = "date_read DESC";
+        }
+
+        const result = await db.query(
+            `SELECT * FROM books ORDER BY ${orderBy};`
+        );
 
         res.render("index.ejs", { books: result.rows });
         
@@ -140,6 +153,24 @@ app.post("/delete/:id", async (req, res) => {
         res.send("Error deleting book!");
     }
 
+});
+
+// notes page
+app.get("/book/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await db.query(
+            "SELECT * FROM books WHERE id = $1;",
+            [id]
+        );
+
+        res.render("book.ejs", {
+            book: result.rows[0]
+        });
+    } catch (err) {
+        console.log(err);
+        res.send("Error viewing notes page");
+    }
 });
 
 // test db connection

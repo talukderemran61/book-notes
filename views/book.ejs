@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+<main>
+    <div>
+        <% if (book) { %>
+            <% if (book.isbn) { %>  <!-- avoid displaying broken image icon when "isbn" field is blank --> 
+                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="cover">
+            <% } %>
+            <h1>
+                <%= book.title %>
+            </h1>
+            <p>
+                Rating: <%= book.rating %>/10
+            </p>
+            <p>
+                ISBN: <%= book.isbn %>
+            </p>
+            <p>
+                Date read: <%= book.date_read %>
+            </p>
+            <p>
+                <pre><%= book.notes %></pre>
+            </p>
+        <% } else { %>
+            <p>Book doesn't exist in Database.</p>
+        <% } %>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

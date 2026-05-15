@@ -1,8 +1,16 @@
 <%- include('partials/header.ejs') %>
 <main>
     <div>
+        <p>Sort by:</p>
+        <a href="/?sort=recent">Recent</a>
+        <a href="/?sort=rating">Rating</a>
+        <a href="/?sort=title">Title</a>
+    </div>
+    <hr>
+    <div>
         <a href="/add">Add New Books</a>
     </div>
+    <hr>
 
     <% books.forEach(book=> { %>
         <div>
@@ -11,19 +19,15 @@
             <% } %>
 
             <h2>
-                <%= book.title %>
+                <%= book.title %> - by <%= book.author %>
             </h2>
-
-            <p>
-                Author: <%= book.author %>
-            </p>
 
             <p>
                 Rating: <b><%= book.rating %></b>/10
             </p>
 
             <p>
-                <%= book.notes %>
+                <strong>Notes:</strong> <%= book.notes.slice(0, 150) %>... <a href="/book/<%= book.id %>">Read more.</a>
             </p>
 
             <div style="display: flex; gap: 20px;">
