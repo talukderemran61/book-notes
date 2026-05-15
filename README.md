@@ -68,6 +68,8 @@ This was built as a capstone project for Angela Yu's Web Development Bootcamp.
 Emran Talukdar - emrant31@gmail.com(prefered) - [LinkedIn](https://www.linkedin.com/in/emran-talukdar/)
 
 ## Demo
+### Live: [visit site↗](https://book-notes-8dff.onrender.com/)
+### Screenshots:  
 1. Home/Landing page with all the books, Sort books, add, edit, and delete book features
 ![Home page](./public/assets/images/home_page.png)
 
