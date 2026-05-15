@@ -3,7 +3,7 @@
     <!-- Sort and add Section -->
     <section class="flex justify-between items-center mb-6">
 
-        <div class="space-x-4 text-sm">
+        <div class="space-x-4 text-sm dark:text-gray-200">
             <a href="/?sort=recent" class="hover:underline">Newest</a>
             <a href="/?sort=rating" class="hover:underline">Best</a>
             <a href="/?sort=title" class="hover:underline">Title</a>
@@ -23,27 +23,27 @@
             <% books.forEach(book=> { %>
                 <div>
                     <% if (book.isbn) { %>  <!-- avoid displaying broken image icon when "isbn" field is blank --> 
-                        <img class="w-40 h-auto" src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="cover">
+                        <img class="w-40 h-auto" src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" loading="lazy" alt="<%= book.title %> - by <%= book.author %>">
                     <% } %>
 
                     <div>
-                        <h2 class="text-xl font-semibold">
+                        <h2 class="text-2xl font-semibold hover:underline hover:text-blue-800 dark:text-white">
                             <%= book.title %> - by <%= book.author %>
                         </h2>
 
-                        <p class="text-sm mt-1">
+                        <p class="text-sm mt-1 dark:text-gray-500">
                             Rating: <strong><%= book.rating %></strong>/10
                             • Date read: <%= new Date(book.date_read).toLocaleDateString() %>
                         </p>
 
-                        <p class="mt-2 text-gray-700">
-                            <strong>Notes:</strong> <%= book.notes.slice(0, 250) %>... <a class="text-blue-600 hover:underline" href="/book/<%= book.id %>">Read more.</a>
+                        <p class="mt-2 text-gray-700 dark:text-gray-200">
+                            <strong>Notes:</strong> <%= book.notes.slice(0, 250) %>... <a class="text-blue-600 hover:underline hover:text-blue-800" href="/book/<%= book.id %>">Read more.</a>
                         </p>
 
                         <div class="mt-2 space-x-3 text-sm">
                             <a 
                                 href="/edit/<%= book.id %>"
-                                class="text-gray-500 hover:underline"
+                                class="text-gray-500 hover:underline dark:text-gray-400"
                             >
                                 Edit
                             </a>

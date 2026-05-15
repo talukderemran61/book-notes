@@ -6,7 +6,7 @@
         </a>
         <% if (book) { %>
             <% if (book.isbn) { %>  <!-- avoid displaying broken image icon when "isbn" field is blank --> 
-                <img class="mt-6 rounded" src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="cover">
+                <img class="mt-6 rounded" src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" loading="lazy" alt="<%= book.title %> - by <%= book.author %>">
             <% } %>
             <h1 class="text-3xl font-bold mt-4">
                 <%= book.title %>
@@ -18,7 +18,7 @@
                 ISBN: <%= book.isbn %>
             </p>
             <p class="mt-2 text-sm">
-                Date read: <%= book.date_read %>
+                Date read: <%= new Date(book.date_read).toLocaleDateString() %>
             </p>
             <p class="mt-6">
                 <pre class="leading-relaxed text-gray-800 whitespace-pre-line"><%= book.notes %></pre>
